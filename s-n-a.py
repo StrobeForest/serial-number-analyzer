@@ -44,7 +44,9 @@ while proper_input == False:
     if serial[9] not in ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "*"]:
         print("Tenth Character Did Not Pass. Please Try Submitting Again.")
     else:
+        print("")
         proper_input = True
+
 
 #Storing numbers as variables now that they have passed
 FirstLetter = serial[0]
@@ -60,94 +62,39 @@ LastLetter = serial[9]
 
 # 1 Identifying which Federal Reserve Bank the bill is from using the first letter
 print("The first letter of a serial number (A-L) signifies which of the 12 Federal Reserve Bank locations in the U.S. the bill was printed in.")
-if FirstLetter == "A":
-    print("Your bill was printed in the Boston Federal Reserve Bank.")
-elif FirstLetter == "B":
-    print("Your bill was printed in the New York Federal Reserve Bank.")
-elif FirstLetter == "C":
-    print("Your bill was printed in the Philadelphia Federal Reserve Bank.")
-elif FirstLetter == "D":
-    print("Your bill was printed in the Cleveland Federal Reserve Bank.")
-elif FirstLetter == "E":
-    print("Your bill was printed in the Richmond Federal Reserve Bank.")
-elif FirstLetter == "F":
-    print("Your bill was printed in the Atlanta Federal Reserve Bank.")
-elif FirstLetter == "G":
-    print("Your bill was printed in the Chicago Federal Reserve Bank.")
-elif FirstLetter == "H":
-    print("Your bill was printed in the St. Louis Federal Reserve Bank.")
-elif FirstLetter == "I":
-    print("Your bill was printed in the Minneapolis Federal Reserve Bank.")
-elif FirstLetter == "J":
-    print("Your bill was printed in the Kansas City Federal Reserve Bank.")
-elif FirstLetter == "K":
-    print("Your bill was printed in the Dallas Federal Reserve Bank.")
-elif FirstLetter == "L":
-    print("Your bill was printed in the San Francisco Federal Reserve Bank.")
+FirstLetterList = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"]
+FRBNumList = ["Boston", "New York", "Philadelphia", "Cleveland", "Richmond", "Atlanta", "Chicago", "St. Louis", "Minneapolis", "Kansas City", "Dallas", "San Francisco"]
+Location = (FirstLetterList.index(FirstLetter))
+FRBNum = (FRBNumList[Location])
+print("Your bill was printed in the " + FRBNum + " Federal Reserve Bank.")
 print("")
 
 # 2 Identifying which block the bill was printed on
 print("The last letter of a serial number signifies which block the bill was printed on.")
 print("The last letter is A-Y, without a O because it looks like 0 and without Z because it's reserved for test printings.")
 print("Every time a run from 00000001 to 99999999 is completed, the block is changed, and the last letter goes up by one.")
-if LastLetter == "A":
-    print("Your bill was printed on the first block.")
-if LastLetter == "B":
-    print("Your bill was printed on the second block.")
-if LastLetter == "C":
-    print("Your bill was printed on the third block.")
-if LastLetter == "D":
-    print("Your bill was printed on the fourth block.")
-if LastLetter == "E":
-    print("Your bill was printed on the fifth block.")
-if LastLetter == "F":
-    print("Your bill was printed on the sixth block.")
-if LastLetter == "G":
-    print("Your bill was printed on the seventh block.")
-if LastLetter == "H":
-    print("Your bill was printed on the eighth block.")
-if LastLetter == "I":
-    print("Your bill was printed on the ninth block.")
-if LastLetter == "J":
-    print("Your bill was printed on the tenth block.")
-if LastLetter == "K":
-    print("Your bill was printed on the eleventh block.")
-if LastLetter == "L":
-    print("Your bill was printed on the twelfth block.")
-if LastLetter == "M":
-    print("Your bill was printed on the thirteenth block.")
-if LastLetter == "N":
-    print("Your bill was printed on the fourteenth block.")
-if LastLetter == "P":
-    print("Your bill was printed on the fifteenth block.")
-if LastLetter == "Q":
-    print("Your bill was printed on the sixteenth block.")
-if LastLetter == "R":
-    print("Your bill was printed on the seventeenth block.")
-if LastLetter == "S":
-    print("Your bill was printed on the eighteenth block.")
-if LastLetter == "T":
-    print("Your bill was printed on the nineteenth block.")
-if LastLetter == "U":
-    print("Your bill was printed on the twentieth block.")
-if LastLetter == "V":
-    print("Your bill was printed on the twenty-first block.")
-if LastLetter == "W":
-    print("Your bill was printed on the twenty-second block.")
-if LastLetter == "X":
-    print("Your bill was printed on the twenty-third block.")
-if LastLetter == "Y":
-    print("Your bill was printed on the twenty-fourth block.")
-print("")
+print("When a bill is damaged during the printing process, a new set of bills is printed to make up for the lost ones.")
+print("These new bills have a * (star) as the final letter in the Serial Number, rather than one of the letters defined above.")
+if LastLetter == "*":
+    print("Your bill is a star note. It's the rarest final character of the bill but doesn't necessarily make it valuable.")
+    print("It was printed on it's own set due to a production error with the original run.")
+    print("")
+else:
+    LastLetterList = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y"]
+    BlockNumList = ["first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth", "eleventh", "twelfth", "thirteenth", "fourteenth", "fifteenth", "sixteenth", "seventeenth", "eighteenth", "nineteenth", "twentieth", "twenty-first", "twenty-second", "twenty-third", "twenty-fourth"]
+    Location = (LastLetterList.index(LastLetter))
+    BlockNum = (BlockNumList[Location])
+    print("Your bill was printed on the " + BlockNum + " block.")
+    print("")
 
 # Calculating how many of each number there is in the serial number
 AllNumbers = [FirstNumber, SecondNumber, ThirdNumber, FourthNumber, FifthNumber, SixthNumber, SeventhNumber, EighthNumber]
 
 # 3 Tell what percentage of the way through the run the bill was
-print("There are 99,999,999 bills printed in a run.")
 print("Your bill was printed about " + str(AllNumbers[0]) + str(AllNumbers[1]) + "." + str(AllNumbers[2]) + str(AllNumbers[3]) + "% of the way through the run.")
 print("")
 
+# 4 Tell how many different numbers are present and list them
 Zeros = 0
 Ones = 0
 Twos = 0
@@ -181,16 +128,65 @@ for i in AllNumbers:
     if i == 9:
         Nines = Nines + 1
 
-print(Zeros)
-print(Ones)
-print(Twos)
-print(Threes)
-print(Fours)
-print(Fives)
-print(Sixes)
-print(Sevens)
-print(Eights)
-print(Nines)
+PresentNumbers = []
+AppearNumbers = 0
+CheckList = [Zeros, Ones, Twos, Threes, Fours, Fives, Sixes, Sevens, Eights, Nines]
+if Zeros > 0:
+    PresentNumbers.append("zero")
+    AppearNumbers = AppearNumbers + 1
+if Ones > 0:
+    PresentNumbers.append("one")
+    AppearNumbers = AppearNumbers + 1
+if Twos > 0:
+    PresentNumbers.append("two")
+    AppearNumbers = AppearNumbers + 1
+if Threes > 0:
+    PresentNumbers.append("three")
+    AppearNumbers = AppearNumbers + 1
+if Fours > 0:
+    PresentNumbers.append("four")
+    AppearNumbers = AppearNumbers + 1
+if Fives > 0:
+    PresentNumbers.append("five")
+    AppearNumbers = AppearNumbers + 1
+if Sixes > 0:
+    PresentNumbers.append("six")
+    AppearNumbers = AppearNumbers + 1
+if Sevens > 0:
+    PresentNumbers.append("seven")
+    AppearNumbers = AppearNumbers + 1
+if Eights > 0:
+    PresentNumbers.append("eight")
+    AppearNumbers = AppearNumbers + 1
+if Nines > 0:
+    PresentNumbers.append("nine")
+    AppearNumbers = AppearNumbers + 1
+
+if AppearNumbers == 1:
+    print("One digit appears in your serial number. That digit is " + PresentNumbers[0])
+elif AppearNumbers == 2:
+    print("Two digits appears in your serial number. Those digits are " + PresentNumbers[0] + " and " + PresentNumbers[1] + ".")
+elif AppearNumbers == 3:
+    print("Three digits appears in your serial number. Those digits are " + PresentNumbers[0] + ", " + PresentNumbers[1] + " and " + PresentNumbers[2] + ".")
+elif AppearNumbers == 4:
+    print("Four digits appears in your serial number. Those digits are " + PresentNumbers[0] + ", " + PresentNumbers[1] + ", " + PresentNumbers[2] + " and " + PresentNumbers[3] + ".")
+elif AppearNumbers == 5:
+    print("Five digits appears in your serial number. Those digits are " + PresentNumbers[0] + ", " + PresentNumbers[1] + ", " + PresentNumbers[2] + ", " + PresentNumbers[3] + " and " + PresentNumbers[4] + ".")
+elif AppearNumbers == 6:
+    print("Six digits appears in your serial number. Those digits are " + PresentNumbers[0] + ", " + PresentNumbers[1] + ", " + PresentNumbers[2] + ", " + PresentNumbers[3] + ", " + PresentNumbers[4] + " and " + PresentNumbers[5] + ".")
+elif AppearNumbers == 7:
+    print("Seven digits appears in your serial number. Those digits are " + PresentNumbers[0] + ", " + PresentNumbers[1] + ", " + PresentNumbers[2] + ", " + PresentNumbers[3] + ", " + PresentNumbers[4] + ", " + PresentNumbers[5] + " and " + PresentNumbers[6] + ".")
+elif AppearNumbers == 8:
+    print("Eight digits appears in your serial number. Those digits are " + PresentNumbers[0] + ", " + PresentNumbers[1] + ", " + PresentNumbers[2] + ", " + PresentNumbers[3] + ", " + PresentNumbers[4] + ", " + PresentNumbers[5] + ", " + PresentNumbers[6] + " and " + PresentNumbers[7] + ".")
+print("")
+
+# 5 Adding up the total of all the digits in the serial number
+Total = 0
+for i in AllNumbers:
+    Total = Total + i
+
+print("The total sum of the eight digits in the serial number is " + str(Total) + ".")
+print("")
 
 # 6 Finding out the maximum number(s) in the serial number
 NumberAppearances = [Zeros, Ones, Twos, Threes, Fours, Fives, Sixes, Sevens, Eights, Nines]
@@ -201,46 +197,34 @@ MaxNums = 0
 
 Max = max(NumberAppearances)
 
-print(Max)
-
 if Zeros == Max:
-    print("Zeros")
     Maximums.append("Zero")
     MaxNums = MaxNums + 1
 if Ones == Max:
-    print("Ones")
     Maximums.append("One")
     MaxNums = MaxNums + 1
 if Twos == Max:
-    print("Twos")
     Maximums.append("Two")
     MaxNums = MaxNums + 1
 if Threes == Max:
-    print("Threes")
     Maximums.append("Three")
     MaxNums = MaxNums + 1
 if Fours == Max:
-    print("Fours")
     Maximums.append("Four")
     MaxNums = MaxNums + 1
 if Fives == Max:
-    print("Fives")
     Maximums.append("Five")
     MaxNums = MaxNums + 1
 if Sixes == Max:
-    print("Sixes")
     Maximums.append("Six")
     MaxNums = MaxNums + 1
 if Sevens == Max:
-    print("Sevens")
     Maximums.append("Seven")
     MaxNums = MaxNums + 1
 if Eights == Max:
-    print("Eights")
     Maximums.append("Eight")
     MaxNums = MaxNums + 1
 if Nines == Max:
-    print("Nines")
     Maximums.append("Nine")
     MaxNums = MaxNums + 1
 
