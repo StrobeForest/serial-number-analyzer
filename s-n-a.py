@@ -284,6 +284,6 @@ else:
     if AppearNumbers == 3:
         print("Your bill's serial number is a trinary. The numbers " + PresentNumbers[0] + ", " + PresentNumbers[1] + " and " + PresentNumbers[2] + " are the only numbers that appear in it.")
 
-print("")
+print(" ")
 print("Thanks for using my bill serial number analyzer!")
 
