@@ -10,7 +10,7 @@ while proper_input == False:
     print("Please submit your bill's serial number below in the format found in the examples above.")
     serial = input("---> ")
 
-#Redirecting errors in code to reset
+# Redirecting errors in code to reset
     if len(serial) != 10:
         print("The Total Number of Characters Did Not Pass. Please Try Submitting Again.")
         continue
@@ -48,7 +48,7 @@ while proper_input == False:
         proper_input = True
 
 
-#Storing numbers as variables now that they have passed
+# Storing numbers as variables now that they have passed
 FirstLetter = serial[0]
 FirstNumber = int(serial[1])
 SecondNumber = int(serial[2])
@@ -163,7 +163,7 @@ if Nines > 0:
     AppearNumbers = AppearNumbers + 1
 
 if AppearNumbers == 1:
-    print("One digit appears in your serial number. That digit is " + PresentNumbers[0])
+    print("One digit appears in your serial number. That digit is " + PresentNumbers[0] + ".")
 elif AppearNumbers == 2:
     print("Two digits appears in your serial number. Those digits are " + PresentNumbers[0] + " and " + PresentNumbers[1] + ".")
 elif AppearNumbers == 3:
@@ -238,4 +238,52 @@ elif MaxNums == 4:
     print(Maximums[0] + ", " + Maximums[1] + ", " + Maximums[2] + " and " + Maximums[3] + " are the maximums in the serial number. Each of them appears", Max, "times.")
 else:
     print("No number appears more than once in your serial number.")
+print("")
+
+# Tests to see if a bill is solid
+if AppearNumbers == 1:
+    print("Your bill's serial number is a solid. These only appear once every 11 million bills. It is very rare.")
+    print("")
+else:
+
+    # Tests to see if the serial number is a radar
+    if FirstNumber == EighthNumber and SecondNumber == SeventhNumber and ThirdNumber == SixthNumber and FourthNumber == FifthNumber:
+        print("Your bill's serial number is a radar. That is a rare form of bill.")
+        print("")
+
+    # Tests to see if the bill is very close to the beginning or the end of the run
+    if FirstNumber == 0 and SecondNumber == 0 and ThirdNumber == 0 and FourthNumber == 0 and FifthNumber == 0:
+        print("Your bill is very close to the beginning of the run. The lower the number, the higher it's value.")
+        print("")
+
+    if FirstNumber == 9 and SecondNumber == 9 and ThirdNumber == 9 and FourthNumber == 9 and FifthNumber == 9:
+        print("Your bill is very close to the end of the run. The higher the number, the higher it's value.")
+        print("")
+
+    # Tests if a bill is a bookend or not
+    if FirstNumber == SixthNumber and SecondNumber == SeventhNumber and ThirdNumber == EighthNumber:
+        print("Your bill's serial number is a bookend. That is a rare form of bill.")
+        print("")
+
+    # Tests to see if the bill is a repeater
+    if FirstNumber == FifthNumber and SecondNumber == SixthNumber and ThirdNumber == SeventhNumber and FourthNumber == EighthNumber:
+        print("Your bill's serial number is a repeater. This is a rare form of bill.")
+
+    # Tests to see if the bill is a ladder
+    if SecondNumber == FirstNumber + 1 and ThirdNumber == SecondNumber + 1 and FourthNumber == ThirdNumber + 1 and FifthNumber == FourthNumber + 1 and SixthNumber == FifthNumber + 1 and SeventhNumber == SixthNumber + 1 and EighthNumber == SeventhNumber + 1:
+        print("Your bill's serial number is a ladder. Ladder serial numbers only appear 3 times in an entire run. So they go for a lot of money. It is the rarest sought after serial number (aside from very specific numbers).")
+
+    if SecondNumber == FirstNumber - 1 and ThirdNumber == SecondNumber - 1 and FourthNumber == ThirdNumber - 1 and FifthNumber == FourthNumber - 1 and SixthNumber == FifthNumber - 1 and SeventhNumber == SixthNumber - 1 and EighthNumber == SeventhNumber - 1:
+        print("Your bill's serial number is a reverse ladder. Reverse ladder serial numbers only appear 3 times in an entire run. So they go for a lot of money.")
+
+
+    # Tests to see if the bill is a binary or trinary bill
+    if AppearNumbers == 2:
+        print("Your bill's serial number is a binary. The numbers " + PresentNumbers[0] + " and " + PresentNumbers[1] + " are the only numbers that appear in it.")
+
+    if AppearNumbers == 3:
+        print("Your bill's serial number is a trinary. The numbers " + PresentNumbers[0] + ", " + PresentNumbers[1] + " and " + PresentNumbers[2] + " are the only numbers that appear in it.")
+
+print("")
+print("Thanks for using my bill serial number analyzer!")
 
